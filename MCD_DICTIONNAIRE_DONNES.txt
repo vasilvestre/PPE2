@@ -1,0 +1,222 @@
+Dictionnaire de données 
+
+Nom : id
+Type : Auto_increment
+Taille : 25,0
+Commentaire : 
+
+Nom : category
+Type : Varchar
+Taille : 25,0
+Commentaire : 
+
+Nom : title
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : photo
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : description
+Type : Varchar
+Taille : 2550,0
+Commentaire : 
+
+Nom : price
+Type : Int
+Taille : 25,0
+Commentaire : 
+
+Nom : code
+Type : Varchar
+Taille : 25,0
+Commentaire : 
+
+Nom : name
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : price
+Type : Float
+Taille : 255,0
+Commentaire : 
+
+Nom : code
+Type : Auto_increment
+Taille : 25,0
+Commentaire : 
+
+Nom : first_name
+Type : Varchar
+Taille : 250,2
+Commentaire : 
+
+Nom : last_name
+Type : Varchar
+Taille : 25,0
+Commentaire : 
+
+Nom : email_adress
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : password
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : phone_number
+Type : Varchar
+Taille : 25,0
+Commentaire : 
+
+Nom : adress_line_1
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : line_1
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : line_2
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : line_3
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : city
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : country
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : zipcode
+Type : Int
+Taille : 25,0
+Commentaire : 
+
+Nom : country_province
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : other_details
+Type : Varchar
+Taille : 2500,2
+Commentaire : 
+
+Nom : adress_id
+Type : Auto_increment
+Taille : 25,0
+Commentaire : 
+
+Nom : created_at
+Type : Datetime
+Taille : 250,2
+Commentaire : 
+
+Nom : quantity
+Type : Int
+Taille : 25,2
+Commentaire : 
+
+Nom : image
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : taux
+Type : Int
+Taille : 25,2
+Commentaire : 
+
+Nom : createdAt
+Type : Datetime
+Taille : 250,0
+Commentaire : 
+
+Nom : endAt
+Type : Datetime
+Taille : 25,0
+Commentaire : 
+
+Nom : firstName
+Type : Varchar
+Taille : 250,2
+Commentaire : 
+
+Nom : priceHT
+Type : Float
+Taille : 255,0
+Commentaire : 
+
+Nom : dateCreation
+Type : Datetime
+Taille : 250,2
+Commentaire : 
+
+Nom : lastName
+Type : Varchar
+Taille : 25,0
+Commentaire : 
+
+Nom : emailAdress
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : phoneNumber
+Type : Varchar
+Taille : 25,0
+Commentaire : 
+
+Nom : line1
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : line2
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : line3
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : countryProvince
+Type : Varchar
+Taille : 250,0
+Commentaire : 
+
+Nom : otherDetails
+Type : Varchar
+Taille : 2500,2
+Commentaire : 
+
+Nom : comments
+Type : Varchar
+Taille : 2500,0
+Commentaire : 
+
+Nom : dateEnd
+Type : Datetime
+Taille : 25,0
+Commentaire : 
+

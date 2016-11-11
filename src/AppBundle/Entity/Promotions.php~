@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Promotions
+ *
+ * @ORM\Table(name="Promotions")
+ * @ORM\Entity
+ */
+class Promotions
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="taux", type="integer", nullable=true)
+     */
+    private $taux;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreation", type="datetime", nullable=true)
+     */
+    private $datecreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateEnd", type="datetime", nullable=true)
+     */
+    private $dateend;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

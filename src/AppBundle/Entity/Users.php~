@@ -1,0 +1,71 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Users
+ *
+ * @ORM\Table(name="Users", indexes={@ORM\Index(name="FK_Users_id_Adresses", columns={"id_Adresses"})})
+ * @ORM\Entity
+ */
+class Users
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastName", type="string", length=25, nullable=true)
+     */
+    private $lastname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="emailAdress", type="string", length=250, nullable=true)
+     */
+    private $emailadress;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=250, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phoneNumber", type="string", length=25, nullable=true)
+     */
+    private $phonenumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstName", type="string", length=250, nullable=true)
+     */
+    private $firstname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Adresses
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Adresses")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_Adresses", referencedColumnName="id")
+     * })
+     */
+    private $idAdresses;
+
+
+}
+

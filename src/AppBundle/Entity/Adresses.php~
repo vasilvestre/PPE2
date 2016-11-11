@@ -1,0 +1,82 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Adresses
+ *
+ * @ORM\Table(name="Adresses")
+ * @ORM\Entity
+ */
+class Adresses
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="line1", type="string", length=250, nullable=true)
+     */
+    private $line1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="line2", type="string", length=250, nullable=true)
+     */
+    private $line2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="line3", type="string", length=250, nullable=true)
+     */
+    private $line3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=250, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="countryProvince", type="string", length=250, nullable=true)
+     */
+    private $countryprovince;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="zipcode", type="integer", nullable=true)
+     */
+    private $zipcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=250, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="otherDetails", type="string", length=2500, nullable=true)
+     */
+    private $otherdetails;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+
