@@ -1,0 +1,74 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Products
+ *
+ * @ORM\Table(name="Products", indexes={@ORM\Index(name="FK_Products_code_Product_Categories", columns={"code_Product_Categories"}), @ORM\Index(name="FK_Products_id_Promotions", columns={"id_Promotions"})})
+ * @ORM\Entity
+ */
+class Products
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=250, nullable=false)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=250, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="priceHT", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $priceht;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=2500, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\ProductCategories
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ProductCategories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="code_Product_Categories", referencedColumnName="code")
+     * })
+     */
+    private $codeProductCategories;
+
+    /**
+     * @var \AppBundle\Entity\Promotions
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Promotions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_Promotions", referencedColumnName="id")
+     * })
+     */
+    private $idPromotions;
+
+
+}
+

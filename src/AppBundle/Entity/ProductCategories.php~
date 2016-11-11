@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductCategories
+ *
+ * @ORM\Table(name="Product_Categories")
+ * @ORM\Entity
+ */
+class ProductCategories
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=250, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=2500, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=250, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="code", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $code;
+
+
+}
+

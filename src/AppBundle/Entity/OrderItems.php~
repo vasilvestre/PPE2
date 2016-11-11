@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OrderItems
+ *
+ * @ORM\Table(name="Order_Items")
+ * @ORM\Entity
+ */
+class OrderItems
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantity", type="integer", nullable=true)
+     */
+    private $quantity;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price", type="integer", nullable=true)
+     */
+    private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comments", type="string", length=2500, nullable=true)
+     */
+    private $comments;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+
