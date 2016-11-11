@@ -66,7 +66,7 @@ class Adresse
     protected $otherDetails;
 
     /**
-     * @ORM\OneToMany(targetEntity="Feature", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="product")
      */
     private $users;
 
