@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -25,8 +26,70 @@ class Order
     protected $id;
 
     /**
-     * @ORM\Column(type="")
+     * @ORM\Column(type="datetime")
      */
     protected $dateCreation;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Invoice", inversedBy="order")
+     */
+    private $invoice;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\OrderItems", mappedBy="orders")
+     */
+    private $orderItems;
+
+    public function __construct() {
+        $this->orderItems = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    /**
+     * @param mixed $dateCreation
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInvoice()
+    {
+        return $this->invoice;
+    }
+
+    /**
+     * @param mixed $invoice
+     */
+    public function setInvoice($invoice)
+    {
+        $this->invoice = $invoice;
+    }
 
 }

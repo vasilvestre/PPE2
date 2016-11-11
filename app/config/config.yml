@@ -11,7 +11,11 @@ parameters:
 framework:
     #esi:             ~
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     translator:      { fallbacks: [en] }
+=======
+    translator:      { fallbacks: ["%locale%"] }
+>>>>>>> Stashed changes
 =======
     translator:      { fallbacks: ["%locale%"] }
 >>>>>>> Stashed changes
