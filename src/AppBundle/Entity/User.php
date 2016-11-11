@@ -35,6 +35,11 @@ class User extends BaseUser
     protected $lastName;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Adresse", inversedBy="users")
+     */
+    private $adresse;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -96,6 +101,22 @@ class User extends BaseUser
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param mixed $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
     }
 
     public function __construct()
