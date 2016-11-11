@@ -35,14 +35,6 @@ class Order
      */
     private $invoice;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\OrderItems", mappedBy="orders")
-     */
-    private $orderItems;
-
-    public function __construct() {
-        $this->orderItems = new ArrayCollection();
-    }
 
     /**
      * @return mixed

@@ -39,13 +39,4 @@ class OrderItems
      * @ORM\Column(type="string")
      */
     protected $comments;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Order", inversedBy="OrderItems")
-     */
-    private $orders;
-
-    public function __construct() {
-        $this->orders = new ArrayCollection();
-    }
 }
