@@ -4,11 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
-services:
-    # ...
     admin.product:
         class: AppBundle\Admin\ProductAdmin
         arguments: [~, AppBundle\Entity\Product, ~]
@@ -25,3 +20,7 @@ services:
                 arguments: [~, AppBundle\Entity\ProductCategorie, ~]
                 tags:
                     - { name: sonata.admin, manager_type: orm, label: ProductCategorie }
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
