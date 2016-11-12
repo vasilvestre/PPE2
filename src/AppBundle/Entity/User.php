@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -20,24 +20,25 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $phoneNumber;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
+     *
      */
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $lastName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Adresse", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Address", inversedBy="users")
      */
-    private $adresse;
+    private $address;
 
     /**
      * @return mixed
@@ -106,17 +107,17 @@ class User extends BaseUser
     /**
      * @return mixed
      */
-    public function getAdresse()
+    public function getAddress()
     {
-        return $this->adresse;
+        return $this->address;
     }
 
     /**
-     * @param mixed $adresse
+     * @param mixed $address
      */
-    public function setAdresse($adresse)
+    public function setAddress($address)
     {
-        $this->adresse = $adresse;
+        $this->address = $address;
     }
 
     public function __construct()

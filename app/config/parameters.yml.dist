@@ -11,9 +11,9 @@ parameters:
     # database_path: "%kernel.root_dir%/data.db3"
 
     mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
+    mailer_host:       smtp.mandrillapp.com
+    mailer_user:       efficom
+    mailer_password:   ad409d47a024f46c1a3ee6d21703cd42-us14
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
