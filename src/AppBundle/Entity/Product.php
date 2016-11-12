@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Product
  *
- * @ORM\Table(name="product")
+ * @ORM\Table(name="Products")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
  */
 class Product
@@ -54,6 +54,10 @@ class Product
      */
     private $comment;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Promotion", inversedBy="products")
+     */
+    private $promotion;
 
     /**
      * Get id
@@ -164,5 +168,21 @@ class Product
     {
         return $this->comment;
     }
-}
 
+    /**
+     * @return mixed
+     */
+    public function getPromotion()
+    {
+        return $this->promotion;
+    }
+
+    /**
+     * @param mixed $promotion
+     */
+    public function setPromotion($promotion)
+    {
+        $this->promotion = $promotion;
+    }
+    
+}
