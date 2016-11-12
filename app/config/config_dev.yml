@@ -32,3 +32,10 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+bazinga_faker:
+    orm: doctrine
+    entities:
+        AppBundle\Entity\User:
+            number: 5
+    locale: fr_FR
