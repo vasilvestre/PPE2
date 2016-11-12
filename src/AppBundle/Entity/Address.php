@@ -10,13 +10,13 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Adresses")
+ * @ORM\Table(name="Addresses")
  */
-class Adresse
+class Address
 {
     /**
      * @ORM\Id
@@ -42,21 +42,57 @@ class Adresse
 
     /**
      * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Veuillez saisir votre ville.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="La ville est trop courte.",
+     *     maxMessage="La ville est trop longue.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     protected $city;
 
     /**
      * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Veuillez saisir votre région.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="La region est trop courte.",
+     *     maxMessage="La region est trop longue.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     protected $countryProvince;
 
     /**
      * @ORM\Column(type="integer")
+     *
+     * @Assert\NotBlank(message="Veuillez saisir votre code postal.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="Le code postal est trop court.",
+     *     maxMessage="Le code postal est trop long.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     protected $zipcode;
 
     /**
      * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Veuillez saisir votre code postal.", groups={"Registration", "Profile"})
+     * @Assert\Length(
+     *     min=3,
+     *     max=255,
+     *     minMessage="La ville est trop courte.",
+     *     maxMessage="La ville est trop longue.",
+     *     groups={"Registration", "Profile"}
+     * )
      */
     protected $country;
 
@@ -66,7 +102,7 @@ class Adresse
     protected $otherDetails;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="adresse")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="address")
      */
     private $users;
 
