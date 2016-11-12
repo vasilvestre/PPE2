@@ -1,6 +1,15 @@
 customer:
     firstname: Prénom
     lastname: Nom
+
+# TRADUCTION SONATA#
+Name: Nom
+Taux: Taux
 Product: Produit
 Promotion: Promotion
-ProductCategorie: Catégorie des produits
+ProductCategorie: Catégorie
+
+# TRADUCTIONS DES LISTES #
+Product Categorie List: Liste des catégories
+Product List: Liste des produits
+Promotion List: Liste des promotions
