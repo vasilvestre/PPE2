@@ -1,3 +1,6 @@
 customer:
     firstname: Prénom
     lastname: Nom
+Product: Produit
+Promotion: Promotion
+ProductCategorie: Catégorie des produits
