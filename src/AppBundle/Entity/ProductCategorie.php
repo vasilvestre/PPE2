@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +42,11 @@ class ProductCategorie
      * @ORM\Column(name="image", type="string", length=255)
      */
     private $image;
+
+     /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="productCategorie")
+     */
+    private $products;
 
 
     /**
@@ -124,5 +130,10 @@ class ProductCategorie
     {
         return $this->image;
     }
+
+     public function __construct() {
+        $this->products = new ArrayCollection();
+    }
+
 }
 

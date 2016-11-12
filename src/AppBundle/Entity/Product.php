@@ -60,6 +60,11 @@ class Product
     private $promotion;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ProductCategorie", inversedBy="products")
+     */
+    private $productCategorie;
+
+    /**
      * Get id
      *
      * @return int
@@ -183,6 +188,38 @@ class Product
     public function setPromotion($promotion)
     {
         $this->promotion = $promotion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderItems()
+    {
+        return $this->orderItems;
+    }
+
+    /**
+     * @param mixed $orderItems
+     */
+    public function setOrderItems($orderItems)
+    {
+        $this->orderItems = $orderItems;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductCategorie()
+    {
+        return $this->productCategorie;
+    }
+
+    /**
+     * @param mixed $productCategorie
+     */
+    public function setProductCategorie($productCategorie)
+    {
+        $this->productCategorie = $productCategorie;
     }
     
 }
