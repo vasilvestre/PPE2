@@ -45,6 +45,11 @@ class OrderItems
      */
     protected $orders;
 
+     /**
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="orderItems")
+     */
+    protected $Product;
+
     public function __construct() {
         $this->orders = new ArrayCollection();
     }

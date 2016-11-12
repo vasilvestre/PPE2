@@ -28,6 +28,11 @@ class Product
      */
     private $code;
 
+     /**
+     * @ORM\ManyToMany(targetEntity="orderItems", mappedBy="Product")
+     */
+    private $orderItems;
+
     /**
      * @var string
      *
@@ -58,6 +63,10 @@ class Product
     public function getId()
     {
         return $this->id;
+    }
+
+    public function __construct() {
+        $this->orderItems = new ArrayCollection();
     }
 
     /**
