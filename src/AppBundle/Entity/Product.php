@@ -184,5 +184,5 @@ class Product
     {
         $this->promotion = $promotion;
     }
-    
+
 }
