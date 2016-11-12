@@ -20,3 +20,8 @@ services:
             arguments: [~, AppBundle\Entity\Promotion, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Promotion }
+    admin.productCategorie:
+                class: AppBundle\Admin\ProductCategorieAdmin
+                arguments: [~, AppBundle\Entity\ProductCategorie, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: ProductCategorie }
