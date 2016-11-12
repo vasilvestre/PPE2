@@ -30,7 +30,7 @@ class Product
     private $code;
 
      /**
-     * @ORM\ManyToMany(targetEntity="orderItems", mappedBy="Product")
+     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="product")
      */
     private $orderItems;
 
@@ -51,9 +51,18 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="comment", type="string", length=255, nullable=true)
      */
     private $comment;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Promotion", inversedBy="products")
@@ -222,6 +231,22 @@ class Product
     public function setProductCategorie($productCategorie)
     {
         $this->productCategorie = $productCategorie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
     
 }
