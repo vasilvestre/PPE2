@@ -41,14 +41,14 @@ class OrderItems
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Order", mappedBy="orderItems")
+     * @ORM\ManyToMany(targetEntity="Order", inversedBy="orderItems")
      */
     protected $orders;
 
      /**
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="orderItems")
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="orderItems")
      */
-    protected $Product;
+    protected $product;
 
     public function __construct() {
         $this->orders = new ArrayCollection();
