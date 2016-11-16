@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for product in products %}
+        <label>{{ product.name}}</label>
+        <label>{{ product.priceHt }}€</label>
+        <img src="web/images/products{{ product.image }}.jpg">
+    {% endfor %}
+{% endblock %}

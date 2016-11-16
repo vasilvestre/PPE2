@@ -10,6 +10,8 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction(Request $request)
     {
@@ -17,5 +19,12 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
+    }
+
+    public function shopAction(){
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+        return $this->render('@App/Shop/index.html.twig', array(
+            'products' => $products,
+        ));
     }
 }
