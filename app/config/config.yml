@@ -84,5 +84,11 @@ fos_user:
         form:
             type: AppBundle\Form\RegistrationType
     from_email:
-        address:      noreply@efficom.com
-        sender_name:  loulegrostas
+        address:      noreply@floris.fr
+        sender_name:  Catherine de Floris
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
