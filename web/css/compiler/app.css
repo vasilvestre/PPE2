@@ -6684,3 +6684,14 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+.core{
+    background-color: #b2cecf;
+    height: 100%;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    background-color: #f5f5f5;
+}

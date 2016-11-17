@@ -1,5 +1,9 @@
-ppe2
+Projet Plurythnique Encadré : Floris
 =======
 
-A Symfony project created on November 11, 2016, 2:21 pm.
-prout
+Projet Symfony destiné à la présentation d'une épreuve du BTS SIO.
+Une solution d'e-commerce devait être proposé.
+
+Bundle:
+    -FOSUserBundle
+    -SonataAdmin
