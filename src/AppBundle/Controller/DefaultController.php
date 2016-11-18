@@ -48,7 +48,7 @@ class DefaultController extends Controller
     public function promotionAction(Request $request){
         $promotions = $this->getDoctrine()->getRepository('AppBundle:Promotion')->findAll();
 
-        
+
         return $this->render('@App/Shop/promotions.html.twig',[
             'promotions' => $promotions
         ]);
