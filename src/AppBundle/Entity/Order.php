@@ -40,6 +40,11 @@ class Order
      */
     private $orderItems;
 
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="orders")
+     */
+    private $user;
+
     public function __construct() {
         $this->orderItems = new ArrayCollection();
     }
@@ -91,5 +96,39 @@ class Order
     {
         $this->invoice = $invoice;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderItems()
+    {
+        return $this->orderItems;
+    }
+
+    /**
+     * @param mixed $orderItems
+     */
+    public function setOrderItems($orderItems)
+    {
+        $this->orderItems = $orderItems;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
 
 }
