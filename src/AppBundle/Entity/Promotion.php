@@ -135,10 +135,15 @@ class Promotion
     {
         $this->products = $products;
     }
-    public function __toString()
-    {
-        return $this->taux;
-    }
+
+    /**
+     * @return mixed
+     */
+
+//    public function __toString()
+//    {
+//        return $this->taux;
+//    }
 
     /**
      * @return string
