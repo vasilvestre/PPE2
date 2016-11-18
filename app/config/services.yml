@@ -28,6 +28,12 @@ services:
                 arguments: [~, AppBundle\Entity\ProductCategorie, ~]
                 tags:
                     - { name: sonata.admin, manager_type: orm, label: ProductCategorie }
+    admin.user:
+                class: AppBundle\Admin\UserAdmin
+                arguments: [~, AppBundle\Entity\User, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: User }
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:
