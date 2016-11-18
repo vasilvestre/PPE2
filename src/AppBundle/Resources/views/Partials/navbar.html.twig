@@ -3,14 +3,23 @@
     <div class="collapse navbar-toggleable-xs" id="navbar-header">
         <a class="navbar-brand" href="#">Navbar</a>
         <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item
+                {% if app.request.attributes.get('_route') == 'app_bundle_homepage' %}
+                active
+                {% endif %}">
+                <a class="nav-link" href="{{ path('app_bundle_homepage') }}">Accueil</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+            <li class="nav-item
+                {% if app.request.attributes.get('_route') == 'app_bundle_shop' %}
+                active
+                {% endif %}">
+                <a class="nav-link" href="{{ path('app_bundle_shop') }}">Magasin</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+            <li class="nav-item
+                {% if app.request.attributes.get('_route') == 'app_bundle_homepage' %}
+                active
+                {% endif %}">
+                <a class="nav-link" href="#">Promotion</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
