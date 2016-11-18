@@ -17,10 +17,15 @@ class UserAdmin extends AbstractAdmin
         $rolesChoices = self::flattenRoles($roles);
 
         $formMapper ->with('User')
+            ->add('username','text')
             ->add('firstName','text')
             ->add('LastName', 'text')
             ->add('password','password')
             ->add('email','email')
+            ->add('address', 'sonata_type_model', array(
+                'class' => 'AppBundle\Entity\Address',
+                'property' => 'id',
+            ))
             ->add('roles', 'choice', array(
                 'choices'  => $rolesChoices,
                 'multiple' => true))
@@ -31,12 +36,12 @@ class UserAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
+        $datagridMapper->add('username');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name')
+        $listMapper->addIdentifier('username')
             ->add('priceHT');
     }
 

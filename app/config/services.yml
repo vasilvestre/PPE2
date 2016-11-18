@@ -34,6 +34,12 @@ services:
                 tags:
                     - { name: sonata.admin, manager_type: orm, label: User }
 
+    admin.address:
+                    class: AppBundle\Admin\AddressAdmin
+                    arguments: [~, AppBundle\Entity\Address, ~]
+                    tags:
+                        - { name: sonata.admin, manager_type: orm, label: Address}
+
     app.form.registration:
         class: AppBundle\Form\RegistrationType
         tags:
