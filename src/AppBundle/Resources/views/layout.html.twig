@@ -16,15 +16,17 @@
 </head>
 
 <body>
-<div class="container core">
-    <div class="row">
-        {% include '@App/Partials/navbar.html.twig' %}
-        {% block body %}
-        {% endblock %}
-        {% include '@App/Partials/footer.html.twig' %}
-    </div>
+<div class="col-sm-2">
+    {% block filter %}
+    {% endblock %}
+</div>
+<div class="col-sm-8">
+    {% include '@App/Partials/navbar.html.twig' %}
+    {% block body %}
+    {% endblock %}
 </div>
 
+{% include '@App/Partials/footer.html.twig' %}
 
 {% block javascripts %}
     {% javascripts

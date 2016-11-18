@@ -2,10 +2,17 @@
 
 {% block title %}Magasin{% endblock %}
 
+{% block filter %}
+
+{% endblock %}
+
 {% block body %}
+
     {% for product in products %}
+        <div class="col-xs-4">
         <label>{{ product.name}}</label>
         <label>{{ product.priceHt }}€</label>
         <img src="web/images/products/{{ product.image }}.jpg">
+        </div>
     {% endfor %}
 {% endblock %}
