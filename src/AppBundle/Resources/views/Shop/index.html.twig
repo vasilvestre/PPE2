@@ -1,20 +1,27 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
-{% block title %}Magasin{% endblock %}
+{% block title %}Floris - Magasin{% endblock %}
 
 {% block filter %}
-    {% include '@App/Partials/filter.html.twig'  %}
+    {% include '@App/Partials/filter.html.twig' %}
 {% endblock %}
 
 {% block body %}
-
-
-
     {% for product in products %}
+        {% if loop.first %}
+            <div class="row">
+        {% endif %}
         <div class="col-xs-4">
-        <label>{{ product.name}}</label>
-        <label>{{ product.priceHt }}€</label>
-        <img src="web/images/products/{{ product.image }}.jpg">
+            <label>{{ product.name }}</label>
+            <label>{{ product.priceHt }}€</label>
+            <img src="web/images/products/{{ product.image }}.jpg">
+            <button></button>
         </div>
+        {% if loop.index % 3 == 0 %}
+            </div><div class="row">
+        {% endif %}
+        {% if loop.last %}
+            </div>
+        {% endif %}
     {% endfor %}
 {% endblock %}

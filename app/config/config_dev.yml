@@ -36,6 +36,13 @@ monolog:
 bazinga_faker:
     orm: doctrine
     entities:
-        AppBundle\Entity\User:
+        AppBundle\Entity\Product:
             number: 5
+        AppBundle\Entity\Invoice:
+            number: 5
+        AppBundle\Entity\Promotion:
+            number: 2
+        AppBundle\Entity\ProductCategorie:
+            number: 5
+
     locale: fr_FR

@@ -41,6 +41,11 @@ class User extends BaseUser
     private $address;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Order", inversedBy="user")
+     */
+    private $orders;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -124,4 +129,22 @@ class User extends BaseUser
     {
         parent::__construct();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
+    }
+
+
 }
