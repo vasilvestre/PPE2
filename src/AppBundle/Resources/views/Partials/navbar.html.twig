@@ -16,10 +16,10 @@
                 <a class="nav-link" href="{{ path('app_bundle_shop') }}">Magasin</a>
             </li>
             <li class="nav-item
-                {% if app.request.attributes.get('_route') == 'app_bundle_homepage' %}
+                {% if app.request.attributes.get('_route') == 'app_bundle_shop_promotion' %}
                 active
                 {% endif %}">
-                <a class="nav-link" href="#">Promotion</a>
+                <a class="nav-link" href="{{ path('app_bundle_shop_promotion') }}">Promotion</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>

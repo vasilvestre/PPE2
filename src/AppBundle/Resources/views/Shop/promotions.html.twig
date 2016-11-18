@@ -1,0 +1,16 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block body %}
+
+    {% for promotion in promotions %}
+        <div class="col-xs-4">
+            <label>{{ promotion.name}}</label>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

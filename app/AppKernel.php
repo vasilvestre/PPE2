@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

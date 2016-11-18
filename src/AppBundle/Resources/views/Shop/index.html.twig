@@ -3,10 +3,12 @@
 {% block title %}Magasin{% endblock %}
 
 {% block filter %}
-
+    {% include '@App/Partials/filter.html.twig'  %}
 {% endblock %}
 
 {% block body %}
+
+
 
     {% for product in products %}
         <div class="col-xs-4">
