@@ -150,6 +150,10 @@ class OrderItems
         $this->product = $product;
     }
 
+    public function addOrder(Order $order){
+        $order->setOrderItems($this);
+        $this->orders[] = $order;
+    }
 
 
 }

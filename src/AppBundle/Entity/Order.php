@@ -113,8 +113,13 @@ class Order
         $this->orderItems = $orderItems;
     }
 
-    public function addOrderItems($orderItems){
-        $this->orderItems += $orderItems;
+    /**
+     * @param OrderItems $orderItem
+     * @internal param OrderItems $orderItems
+     */
+    public function addOrderItems(OrderItems $orderItem){
+        $orderItem->setOrders($this);
+        $this->orderItems[] = $orderItem;
     }
 
     /**
