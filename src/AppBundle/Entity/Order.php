@@ -113,6 +113,10 @@ class Order
         $this->orderItems = $orderItems;
     }
 
+    public function addOrderItems($orderItems){
+        $this->orderItems += $orderItems;
+    }
+
     /**
      * @return mixed
      */

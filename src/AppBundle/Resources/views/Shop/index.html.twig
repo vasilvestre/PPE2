@@ -15,7 +15,7 @@
             <label>{{ product.name }}</label>
             <label>{{ product.priceHt }}€</label>
             <img src="web/images/products/{{ product.image }}.jpg">
-            <button></button>
+            <a href="{{ path('app_cart_add', {'id': product.id }) }}">Add</a>
         </div>
         {% if loop.index % 3 == 0 %}
             </div><div class="row">
