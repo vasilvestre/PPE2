@@ -50,6 +50,9 @@ class OrderItems
      */
     protected $product;
 
+    /**
+     * OrderItems constructor.
+     */
     public function __construct() {
         $this->orders = new ArrayCollection();
     }
@@ -150,6 +153,14 @@ class OrderItems
         $this->product = $product;
     }
 
+    public function addProduct($product)
+    {
+
+    }
+
+    /**
+     * @param Order $order
+     */
     public function addOrder(Order $order){
         $order->setOrderItems($this);
         $this->orders[] = $order;

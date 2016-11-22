@@ -8,35 +8,37 @@
 
 namespace AppBundle\Controller;
 
-
-use AppBundle\AppBundle;
 use AppBundle\Entity\Order;
 use AppBundle\Entity\OrderItems;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Product;
-use Symfony\Component\BrowserKit\Request;
-use AppBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class CartController extends Controller
 {
     /**
-     * @param $product
-     * @internal param $id
+     * @ParamConverter("product", class="AppBundle:Product")
+     * @param Product $product
+     * @return Response
      */
-    public function addAction($product){
+    public function addAction(Product $product){
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         if($user->getOrders() == null){
-            $order = new Order();
-            $orderItems = new OrderItems();
+            $lastOrder = new Order();
+            $em->persist($lastOrder);
         }else{
-            $order = $user->getOrders();
+            $orders = $user->getOrders();
+            $lastOrder = end($orders);
         }
+//        check if order items exist for existent product
         $orderItems = new OrderItems();
         $orderItems->setProduct($product);
-        $order->addOrderItems($orderItems);
-        $em = $this->getDoctrine()->getEntityManager();
+        $lastOrder->addOrderItems($orderItems);
+        $lastOrder->setDateCreation(new \DateTime('now'));
         $em->flush();
 
-        return ;
+        return new Response('Saved new order with id '.$lastOrder->getId()) ;
     }
 }

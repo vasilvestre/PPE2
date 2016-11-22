@@ -36,7 +36,9 @@ class Order
     private $invoice;
 
     /**
-     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="orders")
+     * @var ArrayCollection $orderItems
+     *
+     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="orders", cascade={"persist"})
      */
     private $orderItems;
 
@@ -45,8 +47,11 @@ class Order
      */
     private $user;
 
+    /**
+     * Order constructor.
+     */
     public function __construct() {
-        $this->orderItems = new ArrayCollection();
+        $this->orderItemss = new ArrayCollection();
     }
 
     /**
@@ -119,7 +124,7 @@ class Order
      */
     public function addOrderItems(OrderItems $orderItem){
         $orderItem->setOrders($this);
-        $this->orderItems[] = $orderItem;
+        $this->orderItemss[] = $orderItem;
     }
 
     /**
