@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -41,7 +42,7 @@ class User extends BaseUser
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Order", inversedBy="user")
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="orders")
      */
     private $orders;
 
@@ -128,6 +129,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -144,6 +146,14 @@ class User extends BaseUser
     public function setOrders($orders)
     {
         $this->orders = $orders;
+    }
+
+    /**
+     * @param Order $order
+     */
+    public function addOrder(Order $order){
+        $order->setUser($this);
+        $this->orders[] = $order;
     }
 
 

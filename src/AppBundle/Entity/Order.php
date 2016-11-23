@@ -43,7 +43,7 @@ class Order
     private $orderItems;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="orders")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="user")
      */
     private $user;
 
