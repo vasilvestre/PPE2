@@ -47,6 +47,16 @@ class User extends BaseUser
     private $orders;
 
     /**
+     * User constructor.
+     * @internal param $orders
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->orders = new ArrayCollection();
+    }
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -126,10 +136,19 @@ class User extends BaseUser
         $this->address = $address;
     }
 
+<<<<<<< Updated upstream
     public function __construct()
     {
         parent::__construct();
         $this->orders = new ArrayCollection();
+=======
+    /**
+     * @param Order $order
+     */
+    public function addOrder(Order $order){
+        $order->setUser($this);
+        $this->orders[] = $order;
+>>>>>>> Stashed changes
     }
 
     /**

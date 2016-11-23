@@ -153,11 +153,6 @@ class OrderItems
         $this->product = $product;
     }
 
-    public function addProduct($product)
-    {
-
-    }
-
     /**
      * @param Order $order
      */
