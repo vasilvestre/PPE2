@@ -42,19 +42,9 @@ class User extends BaseUser
     private $address;
 
     /**
-     * @ORM\OneToMany(targetEntity="Order", mappedBy="orders")
+     * @ORM\ManyToOne(targetEntity="Order", inversedBy="user")
      */
     private $orders;
-
-    /**
-     * User constructor.
-     * @internal param $orders
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->orders = new ArrayCollection();
-    }
 
     /**
      * @return mixed
@@ -136,19 +126,18 @@ class User extends BaseUser
         $this->address = $address;
     }
 
-<<<<<<< Updated upstream
     public function __construct()
     {
         parent::__construct();
         $this->orders = new ArrayCollection();
-=======
+    }
+
     /**
      * @param Order $order
      */
     public function addOrder(Order $order){
         $order->setUser($this);
         $this->orders[] = $order;
->>>>>>> Stashed changes
     }
 
     /**
@@ -165,14 +154,6 @@ class User extends BaseUser
     public function setOrders($orders)
     {
         $this->orders = $orders;
-    }
-
-    /**
-     * @param Order $order
-     */
-    public function addOrder(Order $order){
-        $order->setUser($this);
-        $this->orders[] = $order;
     }
 
 
