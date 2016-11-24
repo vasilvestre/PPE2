@@ -36,25 +36,26 @@ class OrderItems
     protected $quantity;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Order", inversedBy="orderItems")
+     * @ORM\ManyToMany(targetEntity="Order", inversedBy="orderItems", cascade={"persist"}, fetch="EAGER")
      */
     protected $orders;
 
      /**
      * @ORM\ManyToMany(targetEntity="Product", inversedBy="orderItems")
      */
-    protected $product;
+    protected $products;
 
     /**
      * OrderItems constructor.
      */
     public function __construct() {
         $this->orders = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     /**
@@ -140,25 +141,34 @@ class OrderItems
     /**
      * @return mixed
      */
-    public function getProduct()
+    public function getProducts()
     {
-        return $this->product;
+        return $this->products;
     }
 
     /**
-     * @param mixed $product
+     * @param mixed $products
      */
-    public function setProduct($product)
+    public function setProducts($products)
     {
-        $this->product = $product;
+        $this->products = $products;
+    }
+
+    /**
+     * @param Product $product
+     * @return $this
+     */
+    public function addProduct(Product $product){
+        $this->products->add($product);
+
+        return $this;
     }
 
     /**
      * @param Order $order
      */
     public function addOrder(Order $order){
-        $order->setOrderItems($this);
-        $this->orders[] = $order;
+        $this->orders->add($order);
     }
 
 

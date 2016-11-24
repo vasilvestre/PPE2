@@ -37,12 +37,12 @@ class User extends BaseUser
     protected $lastName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Address", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Address", inversedBy="users", cascade={"persist"}, fetch="EAGER")
      */
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Order", inversedBy="user")
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", cascade={"persist"}, fetch="EAGER")
      */
     private $orders;
 
@@ -137,7 +137,7 @@ class User extends BaseUser
      */
     public function addOrder(Order $order){
         $order->setUser($this);
-        $this->orders[] = $order;
+        $this->orders->add($order);
     }
 
     /**
@@ -155,6 +155,5 @@ class User extends BaseUser
     {
         $this->orders = $orders;
     }
-
 
 }
