@@ -36,15 +36,20 @@ class Order
     private $invoice;
 
     /**
-     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="orders")
+     * @var ArrayCollection $orderItems
+     *
+     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="orders", cascade={"persist"}, fetch="EAGER")
      */
     private $orderItems;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="orders")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
      */
     private $user;
 
+    /**
+     * Order constructor.
+     */
     public function __construct() {
         $this->orderItems = new ArrayCollection();
     }
@@ -98,7 +103,7 @@ class Order
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getOrderItems()
     {
@@ -106,7 +111,7 @@ class Order
     }
 
     /**
-     * @param mixed $orderItems
+     * @param ArrayCollection $orderItems
      */
     public function setOrderItems($orderItems)
     {
@@ -116,10 +121,13 @@ class Order
     /**
      * @param OrderItems $orderItem
      * @internal param OrderItems $orderItems
+     * @return $this
      */
     public function addOrderItems(OrderItems $orderItem){
-        $orderItem->setOrders($this);
-        $this->orderItems[] = $orderItem;
+        $orderItem->addOrder($this);
+        $this->orderItems->add($orderItem);
+
+        return $this;
     }
 
     /**

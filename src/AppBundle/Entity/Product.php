@@ -29,11 +29,6 @@ class Product
      */
     private $code;
 
-     /**
-     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="product")
-     */
-    private $orderItems;
-
     /**
      * @var string
      *
@@ -62,10 +57,8 @@ class Product
      */
     private $comment;
 
-
-
     /**
-     * @ORM\ManyToOne(targetEntity="Promotion", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Promotion", inversedBy="products", cascade={"persist"}, fetch="EAGER")
      */
     private $promotion;
 
@@ -73,6 +66,11 @@ class Product
      * @ORM\ManyToOne(targetEntity="ProductCategorie", inversedBy="products")
      */
     private $productCategorie;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="products", cascade={"persist"}, fetch="EAGER")
+     */
+    private $orderItems;
 
     /**
      * Get id
