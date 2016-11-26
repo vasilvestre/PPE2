@@ -23,7 +23,7 @@ services:
             arguments: [~, AppBundle\Entity\Promotion, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Promotion }
-    admin.productCategorie:
+    admin.productcategorie:
                 class: AppBundle\Admin\ProductCategorieAdmin
                 arguments: [~, AppBundle\Entity\ProductCategorie, ~]
                 tags:
@@ -39,6 +39,22 @@ services:
                     arguments: [~, AppBundle\Entity\Address, ~]
                     tags:
                         - { name: sonata.admin, manager_type: orm, label: Address}
+    admin.order:
+                    class: AppBundle\Admin\OrderAdmin
+                    arguments: [~, AppBundle\Entity\Order, ~]
+                    tags:
+                        - { name: sonata.admin, manager_type: orm, label: Order}
+    admin.orderitems:
+                        class: AppBundle\Admin\OrderItemsAdmin
+                        arguments: [~, AppBundle\Entity\OrderItems, ~]
+                        tags:
+                            - { name: sonata.admin, manager_type: orm, label: OrderItems}
+    admin.invoice:
+                        class: AppBundle\Admin\InvoiceAdmin
+                        arguments: [~, AppBundle\Entity\Invoice, ~]
+                        tags:
+                            - { name: sonata.admin, manager_type: orm, label: invoice}
+
 
     app.form.registration:
         class: AppBundle\Form\RegistrationType

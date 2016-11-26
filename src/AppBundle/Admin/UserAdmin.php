@@ -41,8 +41,7 @@ class UserAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('username')
-            ->add('priceHT');
+        $listMapper->addIdentifier('username');
     }
 
     protected static function flattenRoles($rolesHierarchy)
