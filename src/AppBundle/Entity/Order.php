@@ -131,6 +131,16 @@ class Order
     }
 
     /**
+     * @param OrderItems $orderItem
+     * @return $this
+     */
+    public function addFirstOrderItems(OrderItems $orderItem){
+        $this->orderItems->add($orderItem);
+
+        return $this;
+    }
+
+    /**
      * @return mixed
      */
     public function getUser()

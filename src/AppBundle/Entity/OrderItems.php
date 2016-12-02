@@ -46,16 +46,15 @@ class OrderItems
     protected $orders;
 
      /**
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="orderItems")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="orderItems", cascade={"persist"}, fetch="EAGER")
      */
-    protected $products;
+    public $product;
 
     /**
      * OrderItems constructor.
      */
     public function __construct() {
         $this->orders = new ArrayCollection();
-        $this->products = new ArrayCollection();
     }
 
     /**
@@ -106,6 +105,11 @@ class OrderItems
         $this->quantity = $quantity;
     }
 
+    public function upQuantity()
+    {
+        $this->quantity += 1;
+    }
+
     /**
      * @return mixed
      */
@@ -141,27 +145,17 @@ class OrderItems
     /**
      * @return mixed
      */
-    public function getProducts()
+    public function getProduct()
     {
-        return $this->products;
+        return $this->product;
     }
 
     /**
-     * @param mixed $products
+     * @param mixed $product
      */
-    public function setProducts($products)
+    public function setProduct($product)
     {
-        $this->products = $products;
-    }
-
-    /**
-     * @param Product $product
-     * @return $this
-     */
-    public function addProduct(Product $product){
-        $this->products->add($product);
-
-        return $this;
+        $this->product = $product;
     }
 
     /**

@@ -68,7 +68,7 @@ class Product
     private $productCategorie;
 
     /**
-     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="products", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="OrderItems", inversedBy="product")
      */
     private $orderItems;
 

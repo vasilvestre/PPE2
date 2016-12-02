@@ -24,6 +24,7 @@ class CartController extends Controller
      */
     public function addAction(Product $product)
     {
+
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 //        Vérification de la présence d'une commande, sinon création
@@ -35,40 +36,28 @@ class CartController extends Controller
             $lastOrder = end($orders);
         }
 
-//        Création d'un objet de commande vide
-        $orderItem = null;
-//        Obtention des objets dans la commande
-        $orderItems = $lastOrder->getOrderItems()->toArray();
-//        S'il n'existe pas encore de produit, on en crée un
-        if (!empty($orderItems)) {
-            //            On parcourt les objets
-            foreach ($orderItems as $orderItem) {
-//                Si un objet existe, on en rajoute un
-                if ($orderItem == $product) {
-                    $orderItem = $this->getDoctrine()->getRepository('AppBundle:OrderItems')->find($product);
-                    $orderItem->setQuantity(1 + $orderItem->getQuantity());
-                    $orderItem->setPrice($product->getPriceHt());
-                } else {
-//                    Sinon, on le crée
-                    $orderItem = new OrderItems();
-                    $orderItem->addProduct($product);
-                    $orderItem->setQuantity(1);
-                    $orderItem->setPrice($product->getPriceHt());
-                }
-            }
-
-        } elseif ($orderItem == null) {
-            $orderItem = new OrderItems();
-            $orderItem->addProduct($product);
-            $orderItem->setQuantity(1);
+        $firstEntry = 1;
+//                Si un produit est dans la commande, on augmente la quantité uniquement
+        if (!$this->getDoctrine()->getRepository('AppBundle:OrderItems')->find($product) == null) {
+            $firstEntry = 0;
+            $orderItem = $this->getDoctrine()->getRepository('AppBundle:OrderItems')->find($product);
+            $orderItem->upQuantity();
             $orderItem->setPrice($product->getPriceHt());
         } else {
-            var_dump('IDIOT');
-            die;
+            $orderItem = new OrderItems();
+            $orderItem->setProduct($product);
+            $orderItem->setQuantity(1);
+            $orderItem->setPrice($product->getPriceHt());
         }
-//        On ajoute l'objet a la commande et on définit sa date de création
-        $lastOrder->addOrderItems($orderItem);
-        $lastOrder->setDateCreation(new \DateTime('now'));
+
+        var_dump($orderItem);
+
+        if ($firstEntry == 1) {
+            $lastOrder->addFirstOrderItems($orderItem);
+            $lastOrder->setDateCreation(new \DateTime('now'));
+        } else {
+            $lastOrder->addOrderItems($orderItem);
+        }
 
 //        On affecte à l'utilisateur la commande
         $user->addOrder($lastOrder);
@@ -79,5 +68,6 @@ class CartController extends Controller
         $em->flush();
 
         return new Response('Saved new order with id ' . $lastOrder->getId());
+
     }
 }
