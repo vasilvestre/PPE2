@@ -7,6 +7,11 @@
     {% block stylesheets %}
         {% stylesheets
         'css/bootstrap.css'
+        'css/flexslider.css'
+        'css/form.css'
+        'css/jquery-ui.css'
+        'css/memenu.css'
+        'css/style.css'
         'css/main.css'
         filter='cssrewrite' output='css/compiler/app.css' %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
@@ -16,25 +21,64 @@
 </head>
 
 <body>
-<div class="col-sm-2">
-    {% block filter %}
-    {% endblock %}
-</div>
-<div class="col-sm-8">
-    {% include '@App/Partials/navbar.html.twig' %}
-    {% block body %}
-    {% endblock %}
-</div>
+{% include '@App/Partials/navbar.html.twig' %}
+{% block filter %}
+{% endblock %}
+
+{% block body %}
+{% endblock %}
 
 {% include '@App/Partials/footer.html.twig' %}
 
 {% block javascripts %}
     {% javascripts
-    'js/jquery-3.1.1.min.js'
+    'js/jquery.min.js'
+    'js/jquery-ui.min.js'
+    'js/jquery.flexslider.js'
+    'js/jquery.flexisel.js'
+    'js/simpleCart.min.js'
+    'js/memenu.js'
     'js/bootstrap.js'
     output="js/compiled/app.js" %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    <script type="application/x-javascript"> addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <script>$(document).ready(function () {
+            $(".memenu").memenu();
+        });
+    </script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 4,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover:true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint:480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint:640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint:768,
+                        visibleItems: 3
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
 </body>
 </html>
