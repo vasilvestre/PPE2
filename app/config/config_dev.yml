@@ -37,9 +37,16 @@ bazinga_faker:
     orm: doctrine
     entities:
         AppBundle\Entity\Product:
-            number: 10
+            number: 30
+            custom_formatters:
+                code:           { method: randomNumber, parameters: ['3']}
+                name:           { method: text, parameters: ['15']}
+                PriceHt:        { method: randomFloat, parameters: ['2', '0', '40'] }
+                image:          { method: imageUrl}
         AppBundle\Entity\Promotion:
-            number: 2
+            number: 3
+            custom_formatters:
+                Taux:           { method: randomElement, parameters: [['10','50','20']] }
         AppBundle\Entity\ProductCategorie:
             number: 5
 
