@@ -4,12 +4,16 @@ app_bundle_homepage:
 
 app_bundle_shop:
     path: /products
-    defaults: { _controller: AppBundle:Default:shop }
+    defaults: { _controller: AppBundle:Shop:shop }
 
 app_bundle_shop_promotion:
     path: /promotion
-    defaults: { _controller: AppBundle:Default:promotion }
+    defaults: { _controller: AppBundle:Promotion:promotion }
 
 app_cart_add:
     path: /{id}/add
     defaults: { _controller: AppBundle:Cart:add}
+
+app_bundle_account:
+    path: /myaccount
+    defaults: { _controller: AppBundle:user:account}
