@@ -11,7 +11,7 @@ app_bundle_shop_promotion:
     defaults: { _controller: AppBundle:Promotion:promotion }
 
 app_cart_add:
-    path: /{id}/add
+    path: /products/add/{id}
     defaults: { _controller: AppBundle:Cart:add}
 
 app_bundle_account:

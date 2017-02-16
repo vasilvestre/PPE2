@@ -14,7 +14,7 @@
             <h2>Nos Produits</h2>
             <div class="col-md-12 product-model-sec">
                 {% for product in products %}
-                <a href="{{ path('app_cart_add', {'id' : product.id }) }}">
+                <a target="_blank" href="{{ path('app_cart_add', {'id' : product.id }) }}">
                     <div class="product-grid love-grid">
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
                             <img src="{{ product.image }}" class="img-responsive" alt=""/>
