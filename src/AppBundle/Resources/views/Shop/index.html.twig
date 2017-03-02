@@ -1,0 +1,37 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}Floris - Shop{% endblock %}
+
+
+{% block body %}
+
+    <div class="product-model">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Products</li>
+            </ol>
+            <h2>Nos Produits</h2>
+            <div class="col-md-12 product-model-sec">
+                {% for product in products %}
+                <a target="_blank" href="{{ path('app_cart_add', {'id' : product.id }) }}">
+                    <div class="product-grid love-grid">
+                        <div class="product-img b-link-stripe b-animate-go  thickbox">
+                            <img src="{{ product.image }}" class="img-responsive" alt=""/>
+                        </div>
+                <div class="product-info simpleCart_shelfItem">
+                    <div class="product-info-cust prt_name">
+                        <h4>{{ product.name }}</h4>
+                        <p>ID: SR4598</p>
+                        <span class="item_price">{{ product.priceHt }}€</span>
+                        <input type="text" class="item_quantity" value="1"/>
+                        <input type="button" class="item_add items" value="ADD">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

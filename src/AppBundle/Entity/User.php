@@ -2,9 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -20,24 +21,30 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $phoneNumber;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
+     *
      */
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $lastName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Adresse", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Address", inversedBy="users", cascade={"persist"}, fetch="EAGER")
      */
-    private $adresse;
+    private $address;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", cascade={"persist"}, fetch="EAGER")
+     */
+    private $orders;
 
     /**
      * @return mixed
@@ -106,21 +113,47 @@ class User extends BaseUser
     /**
      * @return mixed
      */
-    public function getAdresse()
+    public function getAddress()
     {
-        return $this->adresse;
+        return $this->address;
     }
 
     /**
-     * @param mixed $adresse
+     * @param mixed $address
      */
-    public function setAdresse($adresse)
+    public function setAddress($address)
     {
-        $this->adresse = $adresse;
+        $this->address = $address;
     }
 
     public function __construct()
     {
         parent::__construct();
+        $this->orders = new ArrayCollection();
     }
+
+    /**
+     * @param Order $order
+     */
+    public function addOrder(Order $order){
+        $order->setUser($this);
+        $this->orders->add($order);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
+    }
+
 }

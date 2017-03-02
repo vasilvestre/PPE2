@@ -1,0 +1,19 @@
+app_bundle_homepage:
+    path: /
+    defaults: { _controller: AppBundle:Default:index }
+
+app_bundle_shop:
+    path: /products
+    defaults: { _controller: AppBundle:Shop:shop }
+
+app_bundle_shop_promotion:
+    path: /promotion
+    defaults: { _controller: AppBundle:Promotion:promotion }
+
+app_cart_add:
+    path: /products/add/{id}
+    defaults: { _controller: AppBundle:Cart:add}
+
+app_bundle_account:
+    path: /myaccount
+    defaults: { _controller: AppBundle:user:account}

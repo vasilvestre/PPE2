@@ -4,6 +4,60 @@ parameters:
 #    parameter_name: value
 
 services:
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [~, AppBundle\Entity\Product, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Product }
+
+    admin.promotion:
+            class: AppBundle\Admin\PromotionAdmin
+            arguments: [~, AppBundle\Entity\Promotion, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Promotion }
+    admin.productcategorie:
+                class: AppBundle\Admin\ProductCategorieAdmin
+                arguments: [~, AppBundle\Entity\ProductCategorie, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: ProductCategorie }
+    admin.user:
+                class: AppBundle\Admin\UserAdmin
+                arguments: [~, AppBundle\Entity\User, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: User }
+
+    admin.address:
+                    class: AppBundle\Admin\AddressAdmin
+                    arguments: [~, AppBundle\Entity\Address, ~]
+                    tags:
+                        - { name: sonata.admin, manager_type: orm, label: Address}
+    admin.order:
+                    class: AppBundle\Admin\OrderAdmin
+                    arguments: [~, AppBundle\Entity\Order, ~]
+                    tags:
+                        - { name: sonata.admin, manager_type: orm, label: Order}
+    admin.orderitems:
+                        class: AppBundle\Admin\OrderItemsAdmin
+                        arguments: [~, AppBundle\Entity\OrderItems, ~]
+                        tags:
+                            - { name: sonata.admin, manager_type: orm, label: OrderItems}
+    admin.invoice:
+                        class: AppBundle\Admin\InvoiceAdmin
+                        arguments: [~, AppBundle\Entity\Invoice, ~]
+                        tags:
+                            - { name: sonata.admin, manager_type: orm, label: invoice}
+
+
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+            - { name: sonata.admin, manager_type: orm, label: ProductCategorie }

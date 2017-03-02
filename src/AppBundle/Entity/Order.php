@@ -36,10 +36,20 @@ class Order
     private $invoice;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\OrderItems", mappedBy="orders")
+     * @var ArrayCollection $orderItems
+     *
+     * @ORM\ManyToMany(targetEntity="OrderItems", mappedBy="orders", cascade={"persist"}, fetch="EAGER")
      */
     private $orderItems;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
+     */
+    private $user;
+
+    /**
+     * Order constructor.
+     */
     public function __construct() {
         $this->orderItems = new ArrayCollection();
     }
@@ -91,5 +101,61 @@ class Order
     {
         $this->invoice = $invoice;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getOrderItems()
+    {
+        return $this->orderItems;
+    }
+
+    /**
+     * @param ArrayCollection $orderItems
+     */
+    public function setOrderItems($orderItems)
+    {
+        $this->orderItems = $orderItems;
+    }
+
+    /**
+     * @param OrderItems $orderItem
+     * @internal param OrderItems $orderItems
+     * @return $this
+     */
+    public function addOrderItems(OrderItems $orderItem){
+        $orderItem->addOrder($this);
+        $this->orderItems->add($orderItem);
+
+        return $this;
+    }
+
+    /**
+     * @param OrderItems $orderItem
+     * @return $this
+     */
+    public function addFirstOrderItems(OrderItems $orderItem){
+        $this->orderItems->add($orderItem);
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
 
 }
