@@ -12,7 +12,11 @@ app_bundle_shop_promotion:
 
 app_cart_add:
     path: /products/add/{id}
-    defaults: { _controller: AppBundle:Cart:add}
+    defaults: { _controller: AppBundle:Cart:add }
+
+app_cart_see:
+    path: /cart
+    defaults: { _controller: AppBundle:Cart:list }
 
 app_bundle_account:
     path: /myaccount

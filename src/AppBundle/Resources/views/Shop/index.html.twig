@@ -14,24 +14,28 @@
             <h2>Nos Produits</h2>
             <div class="col-md-12 product-model-sec">
                 {% for product in products %}
-                <a target="_blank" href="{{ path('app_cart_add', {'id' : product.id }) }}">
-                    <div class="product-grid love-grid">
-                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                            <img src="{{ product.image }}" class="img-responsive" alt=""/>
-                        </div>
+                <div class="product-grid love-grid">
+                    <div class="product-img b-link-stripe b-animate-go  thickbox">
+                        <img src="{{ product.image }}" class="img-responsive" alt=""/>
+                    </div>
                 <div class="product-info simpleCart_shelfItem">
                     <div class="product-info-cust prt_name">
                         <h4>{{ product.name }}</h4>
                         <p>ID: SR4598</p>
                         <span class="item_price">{{ product.priceHt }}€</span>
                         <input type="text" class="item_quantity" value="1"/>
-                        <input type="button" class="item_add items" value="ADD">
+                        <a data-href="{{ path('app_cart_add', {'id' : product.id }) }}" type="button"
+                        class="item_add items btn btn-primary">Add</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                </a>
             </div>
             {% endfor %}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/addCart.js') }}"></script>
 {% endblock %}

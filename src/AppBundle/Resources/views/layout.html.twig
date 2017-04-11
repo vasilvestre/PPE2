@@ -37,7 +37,6 @@
     'js/jquery.flexslider.js'
     'js/jquery.flexisel.js'
     'js/memenu.js'
-    'js/bootstrap.js'
     output="js/compiled/app.js" %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -78,6 +77,7 @@
             });
         });
     </script>
+    <script src="{{ asset('js/countCart.js') }}"></script>
 {% endblock %}
 </body>
 </html>
