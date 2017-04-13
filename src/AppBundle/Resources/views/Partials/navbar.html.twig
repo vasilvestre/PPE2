@@ -29,52 +29,20 @@
                 <ul class="memenu skyblue"><li class="active"><a href="{{ path('app_bundle_homepage') }}">Accueil</a></li>
                     <li class="grid"><a href="{{ path('app_bundle_shop') }}">Magasin</a>
                         <div class="mepanel">
-                            <div class="row">
+                            <div class="row text-center">
                                 <div class="col1 me-one">
-                                    <h4>Fleurs</h4>
+                                    <h4>Verdures</h4>
                                     <ul>
-                                        <li><a href="product.html">New Arrivals</a></li>
-                                        <li><a href="product.html">Men</a></li>
+                                        <li><a href="{{ path('app_bundle_shop', {'category' : 'Fleurs'}) }}">Fleurs</a></li>
+                                        <li><a href="{{ path('app_bundle_shop', {'category' : 'Plantes'}) }}">Plantes</a></li>
                                     </ul>
                                 </div>
                                 <div class="col1 me-one">
-                                    <h4>Plantes</h4>
+                                    <h4>Autre</h4>
                                     <ul>
-                                        <li><a href="product.html">Men</a></li>
-                                        <li><a href="product.html">Women</a></li>
+                                        <li><a href="{{ path('app_bundle_shop', {'category' : 'Accessoires'}) }}">Accessoires</a></li>
+                                        <li><a href="{{ path('app_bundle_shop', {'category' : 'Divers'}) }}">Divers</a></li>
                                     </ul>
-                                </div>
-                                <div class="col1 me-one">
-                                    <h4>Accesoires</h4>
-                                    <ul>
-                                        <li><a href="product.html">Levis</a></li>
-                                        <li><a href="product.html">Persol</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="grid"><a href="#">Promotions</a>
-                        <div class="mepanel">
-                            <div class="row">
-                                <div class="col1 me-one">
-                                    <h4>Shop</h4>
-                                    <ul>
-                                        <li><a href="product.html">New Arrivals</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col1 me-one">
-                                    <h4>Style Zone</h4>
-                                    <ul>
-                                        <li><a href="product.html">Men</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col1 me-one">
-                                    <h4>Popular Brands</h4>
-                                    <ul>
-                                        <li><a href="product.html">Levis</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </li>

@@ -27,17 +27,17 @@ class CartController extends Controller
      */
     public function addAction(Request $request, Product $product)
     {
-        $quantity = $request->query->get('quantity',1);
-        if($quantity < 1)return new Response('Quantitée négative ou de 0','400');
+        $quantity = $request->query->get('quantity', 1);
+        if ($quantity < 1) return new Response('Quantitée négative ou de 0', '400');
 
         $session = $request->getSession();
-        $products = $session->get('products',[]);
+        $products = $session->get('products', []);
 
-        $key = array_search($product, array_column($products,'product'));
+        $key = array_search($product, array_column($products, 'product'));
         $key === false
-            ? array_push($products,['product' => $product, 'quantity' => $quantity])
+            ? array_push($products, ['product' => $product, 'quantity' => $quantity])
             : $products[$key]['quantity'] += $quantity;
-        ;
+
         $session->set('products', $products);
 
         return new Response();
@@ -49,11 +49,11 @@ class CartController extends Controller
      */
     public function listAction(Request $request)
     {
-        $products = $request->getSession()->get('products',[]);
+        $products = $request->getSession()->get('products', []);
 
-        if ($request->isXmlHttpRequest()){
+        if ($request->isXmlHttpRequest()) {
             $count = 0;
-            foreach ($products as $product){
+            foreach ($products as $product) {
                 $count += $product['quantity'];
             }
             return new Response($count);

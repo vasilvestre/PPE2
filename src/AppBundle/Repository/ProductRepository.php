@@ -18,4 +18,16 @@ class ProductRepository extends EntityRepository
             'id' => 'ASC'
         ]);
     }
+
+    public function findByCategorie(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->innerJoin('p.productCategorie', 'c')
+            ->andWhere('c.name = :name')
+            ->setParameter('name', $criteria['name'])
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

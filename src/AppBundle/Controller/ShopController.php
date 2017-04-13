@@ -8,7 +8,14 @@ class ShopController extends Controller
 {
     public function shopAction(Request $request)
     {
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+        $category = $request->query->get('category');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+
+        if (null !== $category){
+            $products = $repository->findByCategorie(['name' => $category]);
+        }else{
+            $products = $repository->findAll();
+        }
 
         return $this->render('@App/Shop/index.html.twig', [
             'products' => $products
