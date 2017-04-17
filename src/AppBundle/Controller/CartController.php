@@ -50,6 +50,7 @@ class CartController extends Controller
     public function listAction(Request $request)
     {
         $products = $request->getSession()->get('products', []);
+        $total = 0;
 
         if ($request->isXmlHttpRequest()) {
             $count = 0;
@@ -58,6 +59,16 @@ class CartController extends Controller
             }
             return new Response($count);
         }
-        return $this->render('AppBundle:Cart:list.html.twig');
+
+        foreach ($products as $list){
+            /** @var Product $product */
+            $product = $list['product'];
+            $total += ($product->getPriceHt() * $list['quantity']);
+        }
+
+        return $this->render('AppBundle:Cart:list.html.twig', [
+            'products' => $products,
+            'total' => $total
+        ]);
     }
 }
