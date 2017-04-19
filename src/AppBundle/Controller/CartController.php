@@ -32,12 +32,18 @@ class CartController extends Controller
 
         $session = $request->getSession();
         $products = $session->get('products', []);
+        $found = false;
 
-        $key = array_search($product, array_column($products, 'product'));
-        $key === false
-            ? array_push($products, ['product' => $product, 'quantity' => $quantity])
-            : $products[$key]['quantity'] += $quantity;
-
+        $promotion = $product->getPromotion() == null ? null : $product->getPromotion();
+        foreach ($products as $key => $value){
+            if ($product->getId() === $value['product']->getId()){
+                $products[$key]['quantity'] += $quantity;
+                $found = true;
+            }
+        }
+        if ($found == false){
+            array_push($products, ['product' => $product, 'quantity' => $quantity, 'promotion' => $promotion]);
+        }
         $session->set('products', $products);
 
         return new Response();
@@ -64,6 +70,10 @@ class CartController extends Controller
             /** @var Product $product */
             $product = $list['product'];
             $total += ($product->getPriceHt() * $list['quantity']);
+            if ($product->getPromotion() !== null){
+                $total -= ($product->getPromotion()->getTaux() / 100) * $total;
+            }
+            $total = number_format($total, 2);
         }
 
         return $this->render('AppBundle:Cart:list.html.twig', [

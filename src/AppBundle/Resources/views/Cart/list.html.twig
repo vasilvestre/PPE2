@@ -46,9 +46,16 @@
                                         </a>
                                     </li>
                                     <li><span>{{ item.product.name }}</span></li>
-                                    <li><span>{{ item.product.PriceHt }}</span></li>
+                                    <li><span>
+                                            {% if item.promotion is not null %}
+                                                {{ item.product.PriceHt }} - {{ item.promotion.taux }}€
+                                            {% else %}
+                                                {{ item.product.PriceHt }}€
+                                            {% endif %}
+                                        </span>
+                                    </li>
                                     <li><span>{{ item.quantity }}</span></li>
-                                    <li><a href="single.html" class="add-cart cart-check">ADD TO CART</a></li>
+                                    <li><a href="single.html" class="add-cart cart-check">Supprimer</a></li>
                                     <div class="clearfix"></div>
                                 </ul>
                             {% endfor %}
@@ -58,16 +65,8 @@
             </div>
             <div class="col-md-3 cart-total">
                 <a class="continue" href="{{ path('app_bundle_shop') }}">Continuer mes achats</a>
-                <div class="price-details">
-                    <h3>Détails du panier</h3>
-                    <span>Total</span>
-                    <span class="total">{{ total }}</span>
-                    <span>Promotions</span>
-                    <span class="total">---</span>
-                    <div class="clearfix"></div>
-                </div>
                 <h4 class="last-price">TOTAL</h4>
-                <span class="total final">{{ total }}</span>
+                <span class="total final">{{ total }}€</span>
                 <div class="clearfix"></div>
                 <a class="order" href="#">Valider le panier</a>
             </div>
