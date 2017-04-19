@@ -135,5 +135,15 @@ class ProductCategorie
         $this->products = new ArrayCollection();
     }
 
+    public function addProduct(Product $product) {
+        $this->products->add($product);
+        $product->setProductCategorie($this);
+    }
+
+    public function removeProduct(Product $product) {
+        $this->products->removeElement($product);
+        $product->setProductCategorie(null);
+    }
+
 }
 

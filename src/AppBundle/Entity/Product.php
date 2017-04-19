@@ -63,7 +63,7 @@ class Product
     private $promotion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ProductCategorie", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="ProductCategorie", inversedBy="products", fetch="EAGER")
      */
     private $productCategorie;
 
@@ -246,5 +246,4 @@ class Product
     {
         $this->image = $image;
     }
-    
 }
