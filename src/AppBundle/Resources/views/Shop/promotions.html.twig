@@ -1,22 +1,7 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block body %}
-    {% for promotion in promotions %}
-        {% if loop.first %}
-            <div class="row">
-        {% endif %}
-        <div class="col-xs-4">
-            <label>{{ promotion.name }}</label>
-            <label>{{ promotion.taux }}</label>
-            <label>{{ promotion.DateEnd|date("d/m") }}</label>
-        </div>
-        {% if loop.index % 3 == 0 %}
-            </div><div class="row">
-        {% endif %}
-        {% if loop.last %}
-            </div>
-        {% endif %}
-    {% endfor %}
+
 {% endblock %}
 
 {% block title %}
