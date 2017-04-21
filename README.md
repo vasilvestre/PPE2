@@ -1,13 +1,3 @@
-Projet Plurythnique Encadré : 
-=======
-
-Projet Symfony destiné à la présentation d'une épreuve du BTS SIO.
-Une solution d'e-commerce devait être proposé.
-
-Bundle:
-    -FOSUserBundle
-    -SonataAdmin
-    
 # Floris
 
 Logiciel d'e-commerce permettant l'affichage d'une page d'accueil, d'affichage de produit, de panier et de gestion de compte.
