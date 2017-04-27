@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+            new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
