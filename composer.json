@@ -34,7 +34,8 @@
         "jms/translation-bundle": "@stable",
         "willdurand/faker-bundle": "@stable",
         "symfony/assetic-bundle": "^2.8",
-        "lexik/form-filter-bundle": "~5.0"
+        "lexik/form-filter-bundle": "~5.0",
+        "coresphere/console-bundle": "^0.5.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
