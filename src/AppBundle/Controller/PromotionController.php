@@ -7,15 +7,19 @@ use Symfony\Component\HttpFoundation\Request;
 class PromotionController extends Controller
 {
     public function promotionAction(Request $request){
-        $promotions = $this->getDoctrine()->getRepository('AppBundle:Promotion')->findall();
-        $productsPromo1 = $this->getDoctrine()->getRepository('AppBundle:Product')->findByPromotion('1');
-        $productsPromo2= $this->getDoctrine()->getRepository('AppBundle:Product')->findByPromotion('2');
-
         $products = [];
-        array_push($products, $productsPromo2);
-        array_push($products, $productsPromo1);
+        $productsPromo1 = $this->getDoctrine()->getRepository('AppBundle:Product')->findByPromotion('1');
+        $productsPromo2 = $this->getDoctrine()->getRepository('AppBundle:Product')->findByPromotion('2');
+
+        foreach ($productsPromo1 as $product){
+            array_push($products, $product);
+        }
+
+        foreach ($productsPromo2 as $product){
+            array_push($products, $product);
+        }
         return $this->render('@App/Shop/index.html.twig',[
-            'products' => $products[0],
+            'products' => $products,
         ]);
     }
 }
