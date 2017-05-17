@@ -14,6 +14,10 @@ app_cart_add:
     path: /products/add/{id}
     defaults: { _controller: AppBundle:Cart:add }
 
+app_cart_remove:
+    path: /products/remove/{id}
+    defaults: { _controller: AppBundle:Cart:delete }
+
 app_cart_see:
     path: /cart
     defaults: { _controller: AppBundle:Cart:list }

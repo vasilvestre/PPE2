@@ -45,14 +45,14 @@
                         </figcaption>
                     </figure>
                     <div class="clearfix"></div>
-                    <h3>BridalParty & Dresses</h3>
+                    <h3>Pépinière</h3>
                 </div>
             </div>
             <div class="col-md-4 bride-grid">
                 <div class="content-grid l-grids">
                     <img src="{{ asset('img/landing/lx5pkzvlsea-sam-operchuck.jpg') }}" alt=""/>
 
-                    <h3>Bridesmaid Dresses</h3>
+                    <h3>Jardinerie</h3>
                 </div>
             </div>
             <div class="col-md-4 bride-grid">
@@ -65,7 +65,7 @@
                         </figcaption>
                     </figure>
                     <div class="clearfix"></div>
-                    <h3>Wedding</h3>
+                    <h3>Botanique</h3>
                 </div>
                 <div class="content-grid l-grids">
                     <figure class="effect-bubba">
@@ -76,7 +76,7 @@
                         </figcaption>
                     </figure>
                     <div class="clearfix"></div>
-                    <h3>Most Beautiful</h3>
+                    <h3>Respect</h3>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -85,22 +85,15 @@
     <!---->
     <div class="featured">
         <div class="container">
-            <h3>Featured Products</h3>
+            <h3>Produits mit en avant</h3>
             {% set break = false %}
             {% for product in products %}
                 <div class="feature-grids">
                 <div class="col-md-3 feature-grid jewel">
-                    <a href="product.html"><img src="../img/products/{{ product.image }}.jpg" alt=""/>
+                    <a href="{{ path('app_bundle_shop')}}"><img src="{{ product.image }}" alt=""/>
                         <div class="arrival-info">
                             <h4>{{ product.name }}</h4>
                             <p>{{ product.priceHt }}€</p>
-                        </div>
-                        <div class="viw">
-                            <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Vue
-                                rapide</a>
-                        </div>
-                        <div class="shrt">
-                            <a href="product.html"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Liste rapide</a>
                         </div>
                     </a>
                 </div>
@@ -112,7 +105,7 @@
         </div>
     </div>
     <!---->
-    <div class="arrivals">
+    {#<div class="arrivals">
         <div class="container">
             <h3>New Arrivals</h3>
             <div class="arrival-grids">
@@ -194,5 +187,5 @@
                 <script type="text/javascript" src="js/jquery.flexisel.js"></script>
             </div>
         </div>
-    </div>
+    </div>#}
 {% endblock %}

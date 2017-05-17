@@ -55,7 +55,7 @@
                                         </span>
                                     </li>
                                     <li><span>{{ item.quantity }}</span></li>
-                                    <li><a href="single.html" class="add-cart cart-check">Supprimer</a></li>
+                                    <li><a href="{{ path('app_cart_remove', {'id' : item.product.id }) }}" class="add-cart cart-check">Supprimer</a></li>
                                     <div class="clearfix"></div>
                                 </ul>
                             {% endfor %}

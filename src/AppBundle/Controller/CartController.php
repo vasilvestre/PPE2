@@ -12,6 +12,7 @@ use AppBundle\Entity\Order;
 use AppBundle\Entity\OrderItems;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\User;
+use Doctrine\ORM\EntityNotFoundException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -80,5 +81,32 @@ class CartController extends Controller
             'products' => $products,
             'total' => $total
         ]);
+    }
+
+    /**
+     * @ParamConverter("product", class="AppBundle:Product")
+     * @param Request $request
+     * @param Product $product
+     * @return Response
+     * @throws EntityNotFoundException
+     */
+    public function deleteAction(Request $request, Product $product)
+    {
+        $session = $request->getSession();
+        $products = $session->get('products', []);
+        $found = false;
+
+        foreach ($products as $key => $value){
+            if ($product->getId() === $value['product']->getId()){
+                unset($products[$key]);
+                $found = true;
+            }
+        }
+        if ($found == false){
+            throw new EntityNotFoundException('La ressource demandée n\'existe pas dans le panier.');
+        }
+        $session->set('products', $products);
+
+        return $this->redirectToRoute('app_cart_see');
     }
 }
